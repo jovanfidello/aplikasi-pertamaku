@@ -4,8 +4,8 @@ FROM node:18-alpine
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and pnpm lock file
-COPY package.json pnpm-lock.yaml ./
+# Copy package.json only (no need for pnpm-lock.yaml)
+COPY package.json ./
 
 # Install dependencies
 RUN npm install
@@ -18,3 +18,4 @@ EXPOSE 3000
 
 # Command to run the backend
 CMD ["node", "server.js"]
+
