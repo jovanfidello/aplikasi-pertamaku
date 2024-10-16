@@ -25,5 +25,8 @@ RUN cp -r frontend/dist/* backend/public/
 # Expose the port the backend will run on
 EXPOSE 3000
 
+# Set environment variables for the backend
+ENV SUBDOMAIN=${NAME:-default}
+
 # Run the backend server
 CMD ["node", "backend/server.js"]
