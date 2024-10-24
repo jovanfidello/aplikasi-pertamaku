@@ -7,7 +7,6 @@ import fs from 'fs';
 
 const app = express();
 app.use(express.json());
-
 app.use(cors({
   origin: 'https://20.5.250.178/jovanfidello',
   optionsSuccessStatus: 200,
@@ -31,15 +30,15 @@ app.get('/api/user/:id', (req, res) => {
 
 // API route to change user email
 app.post('/api/user/:id/change-email', (req, res) => {
+  const newEmail = req.body.email;
   
+  // Perform validation before using the email in the query
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(newEmail)) {
-        return res.status(400).send('Invalid email format');
+    return res.status(400).send('Invalid email format');
   }
 
-  const newEmail = req.body.email;
-  const query = 'UPDATE users SET email = ? WHERE id = ?'; // Menggunakan parameterized query
-
+  const query = 'UPDATE users SET email = ? WHERE id = ?';
   connection.run(query, [newEmail, req.params.id], function (err) {
     if (err) return res.status(500).send('Database error');
     if (this.changes === 0) res.status(404).send('User not found');
@@ -86,4 +85,3 @@ app.get(`/${subdomain}`, (req, res) => {
 app.listen(3000, () => {
   console.log(`Server running on port 3000. Access the app at http://localhost:3000/${subdomain}`);
 });
-
