@@ -7,7 +7,7 @@ import fs from 'fs';
 
 const app = express();
 app.use(express.json());
-const cors = require('cors');
+
 app.use(cors({
   origin: 'https://20.5.250.178/jovanfidello',
   optionsSuccessStatus: 200,
