@@ -2,7 +2,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name 40.82.192.42;
+    server_name 20.5.250.178;
 
     location /jovanfidello {
         proxy_pass http://localhost:3000;
