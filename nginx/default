@@ -2,7 +2,7 @@ server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
-    server_name 40.82.192.42;  # IP address
+    server_name 20.5.250.178;  # IP address
 
     ssl_certificate /etc/ssl/certs/selfsigned.crt;  # Path ke sertifikat self-signed
     ssl_certificate_key /etc/ssl/private/selfsigned.key;  # Path ke private key
