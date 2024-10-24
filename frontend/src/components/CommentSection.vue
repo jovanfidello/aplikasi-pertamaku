@@ -1,4 +1,3 @@
-// npm install dompurify
 <script setup>
 import { ref } from 'vue';
 import DOMPurify from 'dompurify';
@@ -25,5 +24,3 @@ const submitComment = () => {
     </div>
   </div>
 </template>
-
-
