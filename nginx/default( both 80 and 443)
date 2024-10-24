@@ -17,6 +17,10 @@ server {
            application/javascript js vue;
         }
 
+   #Prevent clickjacking
+        add_header x-frame-options "SAMEORIGIN" always;
+
+
     # Disable caching for better development experience
         add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
 
@@ -53,6 +57,10 @@ server {
         types {
            application/javascript js vue;
         }
+
+   #Prevent clickjacking
+        add_header x-frame-options "SAMEORIGIN" always;
+
 
     # Disable caching for better development experience
         add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
