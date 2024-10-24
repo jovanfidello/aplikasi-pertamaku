@@ -1,13 +1,16 @@
+// npm install dompurify
 <script setup>
 import { ref } from 'vue';
 import DOMPurify from 'dompurify';
 
 const comment = ref('');
-const comments = ref('');
+const comments = ref([]); // Use array to store multiple comments
 
-const submitComment = () => { 
-comments.value += `<p>${DOMPurify.sanitize(comment.value)}</p>`; 
-comment.value = ''; };
+const submitComment = () => {
+  const sanitizedComment = DOMPurify.sanitize(comment.value); // Sanitize input
+  comments.value.push(sanitizedComment); // Add sanitized comment to the array
+  comment.value = ''; // Clear the input field
+};
 </script>
 
 <template>
@@ -15,6 +18,12 @@ comment.value = ''; };
     <h3>Comments</h3>
     <input v-model="comment" placeholder="Leave a comment" />
     <button @click="submitComment">Submit</button>
-    <div v-html="comments"></div>
+
+    <!-- Display comments -->
+    <div v-for="(com, index) in comments" :key="index">
+      <div v-html="com"></div>
+    </div>
   </div>
 </template>
+
+
